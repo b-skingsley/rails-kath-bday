@@ -1,0 +1,9 @@
+<%= simple_form_for(post) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <%= f.input :author %>
+  <%= f.input :message %>
+  <%= f.input :photo, as: :file %>
+  <%= f.button :submit, class: 'relative inline-flex items-center px-2 md:px-4 py-2 border border-transparent text-xs md:text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
+<% end %>

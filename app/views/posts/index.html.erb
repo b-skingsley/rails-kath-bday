@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 xl:grid-cols-4 xl:gap-x-8">
+    <% @posts.sort_by{ |a,b| a.height - a.width }.reverse.each do |post| %>
+      <div class="group">
+        <div
+          data-toggle="modal"
+          data-target="#exampleModal"
+          data-image="<%= cl_image_path post.photo.key %>"
+          data-author="<%= post.author %>"
+          data-message="<%= post.message %>"
+          class="index-image w-full cursor-pointer bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden lg:aspect-none"
+        >
+          <%= cl_image_tag post.photo.key, class: "w-full h-full object-center object-contain lg:w-full lg:h-full" %>
+        </div>
+        <div>
+          <h3 class="mt-2 text-base text-gray-700">Posted by <%= post.author %></h3>
+          <p class="mt-1 text-sm text-gray-500"><%= post.message %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-md">
+      <div class="bg-gray-200 rounded-t-md overflow-hidden">
+        <img
+          id="modal_image"
+          class="w-full h-full object-center object-contain lg:w-full lg:h-full"
+          src=""
+        >
+      </div>
+      <div class="rounded-b-md bg-white p-4">
+        <h3 id="modal_author" class="text-lg text-gray-700"></h3>
+        <p id="modal_message" class="mt-1 text-base text-gray-500"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+  $('.index-image').on({
+    'click': function(){
+      var src = $(this).data('image')
+      var author = $(this).data('author')
+      var message = $(this).data('message')
+      $("#modal_image").attr("src", src);
+      $("#modal_author").html(`Posted by ${author}`);
+      $("#modal_message").html(message);
+    }
+  });
+</script>

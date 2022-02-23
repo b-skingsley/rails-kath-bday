@@ -17,7 +17,9 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-gem 'simple_form'
+
+gem 'acts_as_paranoid'
+gem 'mini_magick'
 
 gem 'dotenv-rails', groups: [:development, :test]
 # Use Redis adapter to run Action Cable in production
@@ -33,7 +35,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cloudinary', '~> 1.16.0'
 
 gem 'autoprefixer-rails', '10.2.5'
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '~> 5.15'
 gem 'simple_form'
 
 group :development, :test do

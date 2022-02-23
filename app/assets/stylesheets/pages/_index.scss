@@ -1,2 +1,6 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.screen-height {
+  min-height: calc(100vh - 8rem)
+}
